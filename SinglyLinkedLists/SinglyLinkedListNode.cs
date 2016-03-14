@@ -61,7 +61,13 @@ namespace SinglyLinkedLists
 
         public bool IsLast()
         {
-            throw new NotImplementedException();
+            if( this.next == null)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
 
         public string ToString()
