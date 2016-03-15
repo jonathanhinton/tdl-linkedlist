@@ -74,5 +74,19 @@ namespace SinglyLinkedLists
         {
             return this.value;
         }
+        
+        public override bool Equals(Object obj)
+        {
+            SinglyLinkedListNode objA = obj as SinglyLinkedListNode;
+            if (objA == null)
+            {
+                return false;
+            }
+            else
+            {
+                return value.Equals(objA.value);
+            }
+        }
+        
     }
 }
