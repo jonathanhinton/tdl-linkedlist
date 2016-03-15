@@ -21,7 +21,7 @@ namespace SinglyLinkedLists
                 {
                     throw new ArgumentException();
                 }
-                this.next = value;
+                next = value;
             }
         }
 
@@ -56,12 +56,21 @@ namespace SinglyLinkedLists
         // READ: http://msdn.microsoft.com/en-us/library/system.icomparable.compareto.aspx
         public int CompareTo(Object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null) return 1;
+
+            SinglyLinkedListNode otherNode = obj as SinglyLinkedListNode;
+            if (otherNode != null)
+            {
+                return value.CompareTo(otherNode.value);
+            } else
+            {
+                throw new ArgumentException();
+            }
         }
 
         public bool IsLast()
         {
-            if( this.next == null)
+            if(next == null)
             {
                 return true;
             } else
@@ -72,7 +81,7 @@ namespace SinglyLinkedLists
 
         public string ToString()
         {
-            return this.value;
+            return value;
         }
         
         public override bool Equals(Object obj)
