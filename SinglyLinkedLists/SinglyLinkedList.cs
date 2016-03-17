@@ -7,6 +7,8 @@ namespace SinglyLinkedLists
 {
     public class SinglyLinkedList
     {
+        public SinglyLinkedListNode FirstLocation { get; set; }
+
         public SinglyLinkedList()
         {
             // NOTE: This constructor isn't necessary, once you've implemented the constructor below.
@@ -29,17 +31,31 @@ namespace SinglyLinkedLists
         {
             throw new NotImplementedException();
         }
-
+        
         public void AddFirst(string value)
         {
             throw new NotImplementedException();
         }
-
+        
         public void AddLast(string value)
         {
-            throw new NotImplementedException();
-        }
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(value);
 
+            if (FirstLocation == null)
+            {
+                FirstLocation = newNode;
+            } else
+            {
+                SinglyLinkedListNode node = FirstLocation;
+
+                while (!node.IsLast())
+                {
+                    node = node.Next;
+                }
+                node.Next = newNode;
+            }
+        }
+        
         // NOTE: There is more than one way to accomplish this.  One is O(n).  The other is O(1).
         public int Count()
         {
@@ -50,12 +66,12 @@ namespace SinglyLinkedLists
         {
             throw new NotImplementedException();
         }
-
+        
         public string First()
-        {
-            throw new NotImplementedException();
+        {        
+            return FirstLocation?.ToString();
         }
-
+        
         public int IndexOf(string value)
         {
             throw new NotImplementedException();

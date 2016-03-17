@@ -79,7 +79,7 @@ namespace SinglyLinkedLists
             }
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return value;
         }
