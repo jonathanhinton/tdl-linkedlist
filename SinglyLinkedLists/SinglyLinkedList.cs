@@ -59,25 +59,58 @@ namespace SinglyLinkedLists
         // NOTE: There is more than one way to accomplish this.  One is O(n).  The other is O(1).
         public int Count()
         {
-            throw new NotImplementedException();
+            int counter = 0;
+            SinglyLinkedListNode location = FirstLocation;
+            if (location == null)
+            {
+                return counter;
+            }
+            else
+            {
+                while (location.Next != null)
+                {
+                    counter++;
+                }
+                return counter;
+            }
         }
 
         public string ElementAt(int index)
         {
             //set counter to compare to index
-            int counter = 0;
+            //int counter = 0;
 
             //create node reference
             SinglyLinkedListNode location = FirstLocation;
-
-            //throw exception if first location is null
+            SinglyLinkedListNode mutableLocation = FirstLocation;
             if (location == null)
             {
                 throw new ArgumentOutOfRangeException("no known nodes");
             }
-
+            if (index == 0)
+            {
+                return mutableLocation.ToString();
+            }
+            if (index < 0)
+            {
+                int count = 1;
+                while (!location.IsLast())
+                {
+                    count++;
+                    location = location.Next;
+                }
+                index = index + count;
+            }
+            //throw exception if first location is null
+            
+                for (int i = 0; i < index; i++)
+                {
+                    mutableLocation = mutableLocation.Next;
+                }
+                return mutableLocation.ToString();
+            
             //If the first location is not null and counter matches index
-            if (location != null && counter == index)
+            /*if (location != null && counter == index)
             {
                 return location.ToString();
             } else
@@ -93,7 +126,7 @@ namespace SinglyLinkedLists
                     }
                 }
                 return location.ToString();
-            }
+            }*/
         }
         
         public string First()
