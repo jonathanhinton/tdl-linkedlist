@@ -64,28 +64,33 @@ namespace SinglyLinkedLists
 
         public string ElementAt(int index)
         {
-            //set counter for finding index
+            //set counter to compare to index
             int counter = 0;
 
             //create node reference
             SinglyLinkedListNode location = FirstLocation;
 
+            //throw exception if first location is null
             if (location == null)
             {
-                throw new ArgumentOutOfRangeException("Knows no node");
+                throw new ArgumentOutOfRangeException("no known nodes");
             }
-            //determine if the first location is not null
+
+            //If the first location is not null and counter matches index
             if (location != null && counter == index)
             {
                 return location.ToString();
             } else
             {
-
                 //set up a loop to find the location based on the counter and index value matching
                 while (counter != index)
                 {
+                    location = location.Next;
                     counter++;
-                    location = FirstLocation.Next;
+                    if (counter < index && location == null)
+                    {
+                        throw new ArgumentOutOfRangeException("no known node");
+                    }
                 }
                 return location.ToString();
             }
