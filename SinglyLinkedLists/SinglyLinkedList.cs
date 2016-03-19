@@ -59,7 +59,7 @@ namespace SinglyLinkedLists
         // NOTE: There is more than one way to accomplish this.  One is O(n).  The other is O(1).
         public int Count()
         {
-            int counter = 0;
+            int counter = 1;
             SinglyLinkedListNode location = FirstLocation;
             if (location == null)
             {
@@ -67,9 +67,10 @@ namespace SinglyLinkedLists
             }
             else
             {
-                while (location.Next != null)
+                while (!location.IsLast())
                 {
                     counter++;
+                    location = location.Next;
                 }
                 return counter;
             }
@@ -77,20 +78,24 @@ namespace SinglyLinkedLists
 
         public string ElementAt(int index)
         {
-            //set counter to compare to index
-            //int counter = 0;
 
             //create node reference
             SinglyLinkedListNode location = FirstLocation;
             SinglyLinkedListNode mutableLocation = FirstLocation;
+
+            //check to see if first location is null, if so throw exception and end method
             if (location == null)
             {
                 throw new ArgumentOutOfRangeException("no known nodes");
             }
+
+            //check to see if index is 0, if so return first location to string
             if (index == 0)
             {
                 return mutableLocation.ToString();
             }
+
+            //check for negative indices, if so increment count to accomodate offset.
             if (index < 0)
             {
                 int count = 1;
@@ -101,32 +106,13 @@ namespace SinglyLinkedLists
                 }
                 index = index + count;
             }
-            //throw exception if first location is null
             
-                for (int i = 0; i < index; i++)
-                {
-                    mutableLocation = mutableLocation.Next;
-                }
-                return mutableLocation.ToString();
-            
-            //If the first location is not null and counter matches index
-            /*if (location != null && counter == index)
+            for (int i = 0; i < index; i++)
             {
-                return location.ToString();
-            } else
-            {
-                //set up a loop to find the location based on the counter and index value matching
-                while (counter != index)
-                {
-                    location = location.Next;
-                    counter++;
-                    if (counter < index && location == null)
-                    {
-                        throw new ArgumentOutOfRangeException("no known node");
-                    }
-                }
-                return location.ToString();
-            }*/
+                mutableLocation = mutableLocation.Next;
+            }
+            return mutableLocation.ToString();
+
         }
         
         public string First()
