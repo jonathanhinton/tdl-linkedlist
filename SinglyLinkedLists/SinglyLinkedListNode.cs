@@ -81,7 +81,7 @@ namespace SinglyLinkedLists
 
         public override string ToString()
         {
-            return value;
+            return this.value;
         }
         
         public override bool Equals(Object obj)

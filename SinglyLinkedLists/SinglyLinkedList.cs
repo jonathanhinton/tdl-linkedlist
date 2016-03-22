@@ -146,7 +146,7 @@ namespace SinglyLinkedLists
         public string Last()
         {
             SinglyLinkedListNode node = FirstLocation;
-            if (this.First() == null)
+            if (node == null)
             {
                 return null;                
             }
@@ -167,6 +167,28 @@ namespace SinglyLinkedLists
         public string[] ToArray()
         {
             throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            SinglyLinkedListNode node = FirstLocation;
+            StringBuilder sb = new StringBuilder();
+            if (node == null)
+            {
+                return "{ }";
+            }
+            sb.Append("{ ");
+            while (node != null)
+            {
+                sb.Append( "\"" + node.ToString() + "\"");
+                node = node.Next;
+                if (node != null)
+                {
+                    sb.Append(", ");
+                }
+            }
+            sb.Append(" }");
+            return sb.ToString();
         }
     }
 }
