@@ -33,7 +33,18 @@ namespace SinglyLinkedLists
         
         public void AddFirst(string value)
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(value);
+            SinglyLinkedListNode pointer;
+            if (this.First() == null)
+            {
+                FirstLocation = newNode;
+            }
+            else
+            {
+                pointer = FirstLocation;
+                FirstLocation = newNode;
+                newNode.Next = pointer;
+            }
         }
         
         public void AddLast(string value)
