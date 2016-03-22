@@ -8,7 +8,6 @@ namespace SinglyLinkedLists
     public class SinglyLinkedList
     {
         public SinglyLinkedListNode FirstLocation { get; set; }
-
         public SinglyLinkedList()
         {
             // NOTE: This constructor isn't necessary, once you've implemented the constructor below.
@@ -166,7 +165,20 @@ namespace SinglyLinkedLists
 
         public string[] ToArray()
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode node = FirstLocation;
+            List<string> nodeList = new List<string>();
+            if (node == null)
+            {
+                string[] result = { };
+                return result;
+            }
+            while (node != null)
+            {
+                nodeList.Add(node.Value);
+                node = node.Next;
+            }
+            string[] hammerTime = nodeList.ToArray();
+            return hammerTime;
         }
 
         public override string ToString()
