@@ -28,7 +28,26 @@ namespace SinglyLinkedLists
 
         public void AddAfter(string existingValue, string value)
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(value);
+            SinglyLinkedListNode node = FirstLocation;
+            SinglyLinkedListNode pointer;
+            if (node == null)
+            {
+                node = newNode;
+            }
+            else
+            {
+                while (node.Value != existingValue)
+                {
+                    if (node.Next == null)
+                    {
+                        throw new ArgumentException();
+                    }
+                    node = node.Next;
+                }
+                newNode.Next = node.Next;
+                node.Next = newNode;
+            }
         }
         
         public void AddFirst(string value)
