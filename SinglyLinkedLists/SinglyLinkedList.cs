@@ -16,7 +16,12 @@ namespace SinglyLinkedLists
         // READ: http://msdn.microsoft.com/en-us/library/aa691335(v=vs.71).aspx
         public SinglyLinkedList(params object[] values)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < values.Length; i++)
+            {
+                string value = values[i].ToString();
+                this.AddLast(value);
+            }
+
         }
 
         // READ: http://msdn.microsoft.com/en-us/library/6x16t2tx.aspx
@@ -30,7 +35,6 @@ namespace SinglyLinkedLists
         {
             SinglyLinkedListNode newNode = new SinglyLinkedListNode(value);
             SinglyLinkedListNode node = FirstLocation;
-            SinglyLinkedListNode pointer;
             if (node == null)
             {
                 node = newNode;
