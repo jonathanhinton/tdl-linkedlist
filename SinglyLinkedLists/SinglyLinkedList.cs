@@ -30,9 +30,16 @@ namespace SinglyLinkedLists
             get { return ElementAt(i) ; }
             set
             {
-                int rectified = i - 1;
-                string current = ElementAt(rectified);
-                this.AddAfter(value, current);
+                if (i <= 0)
+                {
+                    AddFirst(value);
+                }
+                else
+                {
+                    int rectified = i - 1;
+                    string current = ElementAt(rectified);
+                    this.AddAfter(current, value);
+                }
             }
         }
 
