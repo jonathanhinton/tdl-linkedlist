@@ -18,17 +18,22 @@ namespace SinglyLinkedLists
         {
             for (int i = 0; i < values.Length; i++)
             {
-                string value = values[i].ToString();
-                this.AddLast(value);
+                string newItem = values[i].ToString();
+                this.AddLast(newItem);
             }
 
         }
 
-        // READ: http://msdn.microsoft.com/en-us/library/6x16t2tx.aspx
-        public string this[int i]
+        // READ: 
+        public string this[ int i]
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return ElementAt(i) ; }
+            set
+            {
+                int rectified = i - 1;
+                string current = ElementAt(rectified);
+                this.AddAfter(value, current);
+            }
         }
 
         public void AddAfter(string existingValue, string value)
