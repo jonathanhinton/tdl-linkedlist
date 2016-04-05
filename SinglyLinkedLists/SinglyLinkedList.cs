@@ -36,11 +36,24 @@ namespace SinglyLinkedLists
                 }
                 else
                 {
-                    int rectified = i - 1;
-                    string current = ElementAt(rectified);
-                    this.AddAfter(current, value);
+                    AddAt(i, value);
+                    
                 }
             }
+        }
+
+        public void AddAt(int index, string value)
+        {
+            SinglyLinkedListNode newNode = new SinglyLinkedListNode(value);
+            SinglyLinkedListNode node = FirstLocation;
+
+            for (int i = 1; i < index; i++)
+            {
+                node = node.Next;
+            }
+            //newNode.Next = node.Next;
+            node.Next = newNode;
+
         }
 
         public void AddAfter(string existingValue, string value)
@@ -55,11 +68,16 @@ namespace SinglyLinkedLists
             {
                 while (node.Value != existingValue)
                 {
+                    //if node.next == null then we've gone too far.
                     if (node.Next == null)
                     {
                         throw new ArgumentException();
+                    } else
+                    {
+                        node = node.Next;
+
                     }
-                    node = node.Next;
+
                 }
                 newNode.Next = node.Next;
                 node.Next = newNode;
@@ -201,7 +219,12 @@ namespace SinglyLinkedLists
 
         public void Remove(string value)
         {
-            throw new NotImplementedException();
+            SinglyLinkedListNode node = FirstLocation;
+            while (node.ToString() != value)
+            {
+                node = node.Next;
+            }
+
         }
 
         public void Sort()
