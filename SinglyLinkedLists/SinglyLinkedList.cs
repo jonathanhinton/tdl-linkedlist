@@ -194,11 +194,18 @@ namespace SinglyLinkedLists
             //check to see if the first location is null, if so throw argument exception
             if (node == null)
             {
-                throw new ArgumentOutOfRangeException("no known nodes");
+                index = -1;
+                return index;
             }
 
             while(node.Value != value)
             {
+                if (node.IsLast())
+                {
+                    index = -1;
+                    return index;
+                }
+
                 index++;
                 node = node.Next;
             }
