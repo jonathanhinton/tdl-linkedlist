@@ -51,7 +51,7 @@ namespace SinglyLinkedLists
             {
                 node = node.Next;
             }
-            //newNode.Next = node.Next;
+
             node.Next = newNode;
 
         }
