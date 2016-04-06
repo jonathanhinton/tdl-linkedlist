@@ -185,7 +185,25 @@ namespace SinglyLinkedLists
         
         public int IndexOf(string value)
         {
-            throw new NotImplementedException();
+            //declare index variable and assign value of 0
+            int index = 0;
+
+            //declare reference node to itterate through linked list
+            SinglyLinkedListNode node = FirstLocation;
+
+            //check to see if the first location is null, if so throw argument exception
+            if (node == null)
+            {
+                throw new ArgumentOutOfRangeException("no known nodes");
+            }
+
+            while(node.Value != value)
+            {
+                index++;
+                node = node.Next;
+            }
+
+            return index;
         }
 
         public bool IsSorted()
