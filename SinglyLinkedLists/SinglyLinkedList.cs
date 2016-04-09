@@ -225,7 +225,7 @@ namespace SinglyLinkedLists
             for (int i = 1; i < listSize; i++)
             {
                 string strA = myList[i - 1];
-                string strB = myList[1];
+                string strB = myList[i];
                 if (string.Compare(strA, strB) > 0)
                 {
                     return false;
@@ -298,12 +298,29 @@ namespace SinglyLinkedLists
 
         public void Sort()
         {
+            SinglyLinkedListNode node = FirstLocation;
+            SinglyLinkedListNode node2;
+            SinglyLinkedListNode newNodeValue;
             int listSize = Count();
+            if (node == null)
+            {
+                return;
+            }
+            // this for loop will itterate through the list each time sorting the items as it goes
             for (int i = 0; i < listSize; i++)
             {
-                for (int j = 0; j < listSize; j++)
+                //this will itterate once to sort the two values next to each other
+                while (!node.IsLast())
                 {
+                    //I will need to continue this loop within a loop method in order to double sort THIS IS STILL IN PROGRESS
+                    node2 = node.Next;
+                    if (node < node2)
+                    {
+                        node = node.Next;
+                    } else
+                    {
 
+                    }
                 }
             }
         }
