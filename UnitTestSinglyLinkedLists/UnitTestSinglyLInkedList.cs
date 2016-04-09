@@ -188,7 +188,7 @@ namespace UnitTestSinglyLinkedLists
             var expected = new string[] { "grille", "foo", "bar" };
             CollectionAssert.AreEqual(expected, list.ToArray());
         }
-
+        
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void AddAfterItemThatDoesntExist()
@@ -198,6 +198,7 @@ namespace UnitTestSinglyLinkedLists
             list.AddLast("bar");
             list.AddAfter("cat", "grille");
         }
+        
 
         [TestMethod]
         public void AddAfter()

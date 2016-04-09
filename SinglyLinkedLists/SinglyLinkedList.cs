@@ -172,6 +172,10 @@ namespace SinglyLinkedLists
             
             for (int i = 0; i < index; i++)
             {
+                if (mutableLocation.IsLast())
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
                 mutableLocation = mutableLocation.Next;
             }
             return mutableLocation.ToString();
@@ -245,11 +249,39 @@ namespace SinglyLinkedLists
         public void Remove(string value)
         {
             SinglyLinkedListNode node = FirstLocation;
-            while (node.ToString() != value)
-            {
-                node = node.Next;
-            }
 
+            if (node.Value == value)
+            {
+                FirstLocation = node.Next;
+            }
+            else
+            {
+                //find index of node to terminate
+                int nodeToTerminate = IndexOf(value);
+                if (nodeToTerminate == -1)
+                {
+                    FirstLocation = FirstLocation;
+                }
+                else
+                {
+
+                    //rectify the index to grab previous node in order to orphan the node to be removed
+                    int previousNode = nodeToTerminate - 1;
+
+                    //assign new value to find that previous node
+                    string newValue = ElementAt(previousNode);
+
+
+                    //itterate through list to get the node
+                    while (node.Value != newValue)
+                    {
+                        node = node.Next;
+                    }
+
+                    node.Next = node.Next.Next;
+                }
+
+            }
         }
 
         public void Sort()
