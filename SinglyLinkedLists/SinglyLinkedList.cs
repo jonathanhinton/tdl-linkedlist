@@ -220,7 +220,18 @@ namespace SinglyLinkedLists
 
         public bool IsSorted()
         {
-            throw new NotImplementedException();
+            string[] myList = ToArray();
+            int listSize = Count();
+            for (int i = 1; i < listSize; i++)
+            {
+                string strA = myList[i - 1];
+                string strB = myList[1];
+                if (string.Compare(strA, strB) > 0)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private SinglyLinkedListNode LastNode()
@@ -287,7 +298,14 @@ namespace SinglyLinkedLists
 
         public void Sort()
         {
-            throw new NotImplementedException();
+            int listSize = Count();
+            for (int i = 0; i < listSize; i++)
+            {
+                for (int j = 0; j < listSize; j++)
+                {
+
+                }
+            }
         }
 
         public string[] ToArray()
