@@ -122,7 +122,7 @@ namespace SinglyLinkedLists
         // NOTE: There is more than one way to accomplish this.  One is O(n).  The other is O(1).
         public int Count()
         {
-            int counter = 1;
+            int counter = 0;
             SinglyLinkedListNode location = FirstLocation;
             if (location == null)
             {
@@ -130,6 +130,7 @@ namespace SinglyLinkedLists
             }
             else
             {
+                counter = 1;
                 while (!location.IsLast())
                 {
                     counter++;
