@@ -222,13 +222,16 @@ namespace SinglyLinkedLists
         {
             string[] myList = ToArray();
             int listSize = Count();
-            for (int i = 1; i < listSize; i++)
+            if (FirstLocation != null)
             {
-                string strA = myList[i - 1];
-                string strB = myList[i];
-                if (string.Compare(strA, strB) > 0)
+                for (int i = 1; i < listSize; i++)
                 {
-                    return false;
+                    string strA = myList[i - 1];
+                    string strB = myList[i];
+                    if (string.Compare(strA, strB) > 0)
+                    {
+                        return false;
+                    }
                 }
             }
             return true;
@@ -298,30 +301,34 @@ namespace SinglyLinkedLists
 
         public void Sort()
         {
-            SinglyLinkedListNode node = FirstLocation;
-            SinglyLinkedListNode node2;
-            SinglyLinkedListNode newNodeValue;
             int listSize = Count();
-            if (node == null)
+            if (First() == null)
             {
                 return;
             }
-            // this for loop will itterate through the list each time sorting the items as it goes
-            for (int i = 0; i < listSize; i++)
-            {
-                //this will itterate once to sort the two values next to each other
-                while (!node.IsLast())
-                {
-                    //I will need to continue this loop within a loop method in order to double sort THIS IS STILL IN PROGRESS
-                    node2 = node.Next;
-                    if (node < node2)
-                    {
-                        node = node.Next;
-                    } else
-                    {
 
+            if (listSize < 2)
+            {
+                return;
+            }
+
+            // this for loop will itterate through the list each time sorting the items as it goes
+            while (!IsSorted())
+            {
+                SinglyLinkedListNode node = FirstLocation;
+                SinglyLinkedListNode node2 = node.Next;
+                for (int i = 1; i < listSize; i++)
+                {
+                    string temp = node.Next.Value;
+                    if (node > node.Next)
+                    {
+                        node2.Value = node.Value;
+                        node.Value = temp;
                     }
+                    node = node.Next;
+                    node2 = node2.Next;
                 }
+                listSize--;
             }
         }
 
